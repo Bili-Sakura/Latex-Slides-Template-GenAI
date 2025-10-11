@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keynote LaTeX Presentation Template</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #4a90e2;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #2874c7;
+            text-decoration: underline;
+        }
+
+        .wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2em;
+        }
+
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1.5em;
+            margin-bottom: 2em;
+            border-bottom: 2px solid #e8e8e8;
+        }
+
+        .site-name {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #222;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .site-name:hover {
+            color: #4a90e2;
+            text-decoration: none;
+        }
+
+        .top-nav {
+            display: flex;
+            gap: 1.5em;
+        }
+
+        .top-nav a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .top-nav a:hover {
+            color: #4a90e2;
+            text-decoration: none;
+        }
+
+        .page-header {
+            margin-bottom: 2em;
+            padding-bottom: 1em;
+            border-bottom: 2px solid #e8e8e8;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.3em;
+            line-height: 1.2;
+            color: #222;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 1em;
+        }
+
+        .page-content {
+            font-size: 1.05em;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        h2 {
+            margin-top: 2em;
+            margin-bottom: 0.8em;
+            font-size: 1.8em;
+            color: #222;
+            border-bottom: 2px solid #e8e8e8;
+            padding-bottom: 0.5em;
+        }
+
+        h3 {
+            margin-top: 1.5em;
+            margin-bottom: 0.6em;
+            font-size: 1.4em;
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 1.2em;
+        }
+
+        ul,
+        ol {
+            padding-left: 2em;
+            margin: 1em 0;
+        }
+
+        li {
+            margin: 0.5em 0;
+        }
+
+        .code-block {
+            background: #f4f4f4;
+            padding: 1em;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1.5em 0;
+            font-family: "Courier New", monospace;
+            font-size: 0.9em;
+        }
+
+        .code-block code {
+            background: none;
+            padding: 0;
+        }
+
+        .citation-box {
+            margin: 1.5em 0;
+            padding: 1em 1.5em;
+            background: #f9f9f9;
+            border-left: 4px solid #4a90e2;
+            color: #555;
+        }
+
+        .citation-box pre {
+            background: #f4f4f4;
+            padding: 1em;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1em 0;
+            font-size: 0.85em;
+        }
+
+        .cta-section {
+            display: flex;
+            gap: 1em;
+            justify-content: center;
+            margin: 3em 0 2em 0;
+            padding: 2em;
+            background: #f9f9f9;
+            border-radius: 6px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5em;
+            padding: 0.8em 1.5em;
+            background: #4a90e2;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: 1px solid #4a90e2;
+        }
+
+        .btn:hover {
+            background: #2874c7;
+            color: white;
+            border-color: #2874c7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background: #f5f5f5;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .btn-secondary:hover {
+            background: #4a90e2;
+            color: white;
+            border-color: #4a90e2;
+        }
+
+        .pdf-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5em;
+            padding: 0.8em 1.5em;
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(220, 53, 69, 0.2);
+            border: none;
+        }
+
+        .pdf-download:hover {
+            background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+            text-decoration: none;
+            color: white;
+        }
+
+        .footer {
+            margin-top: 3em;
+            padding-top: 2em;
+            border-top: 2px solid #e8e8e8;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .meta-info {
+            color: #666;
+            font-size: 0.95em;
+            margin: 1em 0;
+        }
+
+        @media (max-width: 768px) {
+            .wrapper {
+                padding: 1em;
+            }
+
+            .site-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1em;
+            }
+
+            .site-name {
+                font-size: 1.3em;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .cta-section {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+
+            .page-content {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="site-header">
+            <a href="/" class="site-name">Keynote LaTeX Template</a>
+            <nav class="top-nav">
+                <a href="https://github.com/Bili-Sakura/Latex-Slides-Template-GenAI">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://github.com/Bili-Sakura/Latex-Slides-Template-GenAI/blob/master/docs/GUIDE.md"
+                    target="_blank">
+                    <i class="fas fa-book"></i> Docs
+                </a>
+            </nav>
+        </header>
+
+        <section class="page-content">
+            <div class="page-header">
+                <h1>Keynote LaTeX Presentation Template</h1>
+                <p class="subtitle">A modern, clean Beamer template for professional presentations</p>
+                <p class="meta-info">
+                    <i class="fas fa-calendar"></i> Last Updated: <span id="lastUpdated"></span>
+                </p>
+            </div>
+
+            <h2>About This Template</h2>
+            <p>The Keynote LaTeX Presentation Template is a modern, clean Beamer theme designed for academic and
+                professional presentations. It features a progress bar, flexible citation management, and support
+                for advanced features like multi-page PDF figures.</p>
+
+            <p>This template is production-ready and has been used in real presentations for conferences, research
+                talks, and academic seminars.</p>
+
+            <h2>Quick Start</h2>
+            <p>After cloning this repository, follow these simple steps:</p>
+
+            <h3>1. Update Metadata</h3>
+            <div class="code-block">
+                <code>\title{Your Presentation Title}<br>\author{Your Name}<br>\institute{Your Institution}<br>\date{\today}</code>
+            </div>
+
+            <h3>2. Add Your Content</h3>
+            <div class="code-block">
+                <code>% Edit slides.tex<br>\begin{frame}{Slide Title}<br>&nbsp;&nbsp;Your content here<br>\end{frame}</code>
+            </div>
+
+            <h3>3. Compile</h3>
+            <div class="code-block">
+                <code>pdflatex keynote.tex<br>biber keynote<br>pdflatex keynote.tex<br>pdflatex keynote.tex</code>
+            </div>
+
+            <h2>Preview</h2>
+            <p>Check out the example presentation to see what you can create with this template:</p>
+
+            <div style="text-align: center; margin: 2em 0;">
+                <div style="border: 2px solid #e8e8e8; border-radius: 6px; overflow: hidden; background: #f9f9f9;">
+                    <embed src="keynote.pdf" type="application/pdf" width="100%" height="600px" style="display: block;">
+                </div>
+                <div style="margin-top: 1em;">
+                    <a href="keynote.pdf" download class="pdf-download">
+                        <i class="fas fa-file-pdf"></i> Download Example PDF
+                    </a>
+                </div>
+            </div>
+
+            <h2>Citation</h2>
+            <div class="citation-box">
+                <p>If you use this template in your work, please cite:</p>
+                <pre>@misc{sakura2025keynote,
+  author = {Sakura},
+  title = {Keynote LaTeX Presentation Template},
+  year = {2025},
+  url = {https://github.com/Bili-Sakura/Latex-Slides-Template-GenAI}
+}</pre>
+            </div>
+
+            <h2>Documentation</h2>
+            <p>For detailed usage instructions, customization options, troubleshooting, and advanced features,
+                please refer to the <a
+                    href="https://github.com/Bili-Sakura/Latex-Slides-Template-GenAI/blob/master/docs/GUIDE.md"
+                    target="_blank">comprehensive guide</a>.</p>
+
+            <p>The guide includes:</p>
+            <ul>
+                <li>Complete feature documentation</li>
+                <li>Code examples for all template features</li>
+                <li>Customization instructions</li>
+                <li>Compilation methods and troubleshooting</li>
+                <li>Best practices and tips</li>
+            </ul>
+
+            <div class="cta-section">
+                <a href="https://github.com/Bili-Sakura/Latex-Slides-Template-GenAI" class="btn">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <a href="https://github.com/Bili-Sakura/Latex-Slides-Template-GenAI/archive/refs/heads/master.zip"
+                    class="btn btn-secondary">
+                    <i class="fas fa-download"></i> Download ZIP
+                </a>
+                <a href="https://github.com/Bili-Sakura/Latex-Slides-Template-GenAI/blob/master/docs/GUIDE.md"
+                    target="_blank" class="btn btn-secondary">
+                    <i class="fas fa-book"></i> View Documentation
+                </a>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>© 2025 Sakura | MIT License</p>
+            <p><small>This page is automatically generated from the master branch. Last updated: <span
+                        id="timestamp"></span></small></p>
+        </footer>
+    </div>
+
+    <script>
+        // Set current date
+        document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString();
+        document.getElementById('timestamp').textContent = new Date().toISOString();
+    </script>
+</body>
+
+</html>

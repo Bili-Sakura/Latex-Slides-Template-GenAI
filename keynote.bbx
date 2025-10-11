@@ -1,0 +1,77 @@
+\ProvidesFile{keynote.bbx}[2025/10/11 Custom simplified biblatex style for keynote presentations]
+
+\RequireBibliographyStyle{authoryear}
+\DeclareNameAlias{author}{family-given}
+\renewcommand*{\mkbibnamelast}[1]{#1}
+\renewcommand*{\mkbibnamefirst}[1]{}
+
+% Field format declarations
+\DeclareFieldFormat[article,inproceedings,misc]{title}{#1}
+\DeclareFieldFormat{journaltitle}{#1}
+\DeclareFieldFormat{booktitle}{#1}
+\DeclareFieldFormat{year}{#1}
+
+% Bibliography driver for misc entries
+\DeclareBibliographyDriver{misc}{%
+  \printnames{author}%
+  \setunit{\labelnamepunct}\newblock
+  \printfield{title}%
+  \setunit{\addcomma\space}%
+  \printlist{publisher}%
+  \setunit{\addcomma\space}%
+  \printfield{year}%
+  \finentry
+}
+
+% Bibliography driver for inproceedings entries
+\DeclareBibliographyDriver{inproceedings}{%
+  \printnames{author}%
+  \setunit{\labelnamepunct}\newblock
+  \printfield{title}%
+  \setunit{\addcomma\space}%
+  \printlist{publisher}%
+  \setunit{\addcomma\space}%
+  \printfield{year}%
+  \finentry
+}
+
+% Bibliography driver for article entries
+\DeclareBibliographyDriver{article}{%
+  \printnames{author}%
+  \setunit{\labelnamepunct}\newblock
+  \printfield{title}%
+  \newunit
+  \printfield{journaltitle}%
+  \newunit
+  \printfield{year}%
+  \finentry
+}
+
+% Macros for journal and booktitle formatting
+\renewbibmacro*{journal+issuetitle}{%
+  \iffieldundef{journaltitle}
+    {}
+    {\printfield{journaltitle}\setunit{\addcomma\space}}%
+  \printfield{year}}
+
+\renewbibmacro*{booktitle+year}{%
+  \iffieldundef{booktitle}
+    {}
+    {\printfield{booktitle}\setunit{\addcomma\space}}%
+  \printfield{year}}
+
+\renewbibmacro*{title}{\printfield{title}}
+
+% Clear unnecessary fields
+\AtEveryBibitem{%
+  \clearfield{doi}%
+  \clearfield{eprint}%
+  \clearfield{eprinttype}%
+  \clearfield{eprintclass}%
+  \clearfield{url}%
+  \clearfield{urldate}%
+  \clearfield{note}%
+  \clearfield{publisher}%
+  \clearfield{address}%
+}
+

@@ -1,0 +1,178 @@
+\ProvidesPackage{beamerthemeKeynote}[2025/10/11 Keynote Beamer Theme]
+
+% Required packages
+\RequirePackage{tikz}
+\RequirePackage{tikzpagenodes}
+\usetikzlibrary{calc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{tcolorbox}
+
+\mode<presentation>
+
+% ===== Color Definitions =====
+\definecolor{progressouter}{RGB}{220,220,220}   % background of the progress bar
+\definecolor{progressinner}{RGB}{30,144,255}    % foreground (filled) part of progress bar
+\definecolor{lightorange}{RGB}{255,229,204}     % light orange for highlighting
+
+% Default color scheme (can be customized)
+\definecolor{PrimaryColor}{RGB}{33, 33, 33}
+\definecolor{DarkGray}{RGB}{33,33,33}
+\definecolor{LightGray}{RGB}{150,150,150}
+\definecolor{Ocean}{RGB}{129,194,234}
+\definecolor{DarkOrange}{RGB}{255, 152, 0}
+\definecolor{LightOrange}{RGB}{255, 193, 7}
+\definecolor{DarkGreen}{RGB}{91, 141, 8}
+\definecolor{LightGreen}{RGB}{122, 188, 12}
+\definecolor{LightPurple}{RGB}{191, 83, 219}
+\definecolor{DarkPurple}{RGB}{142, 36, 170}
+
+% ===== Beamer Settings =====
+% Remove navigation symbols
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{bibliography item}{}
+
+% Color settings
+\setbeamercolor{normal text}{fg=DarkGray,bg=white}
+\setbeamercolor{structure}{fg=PrimaryColor}
+\setbeamercolor{frametitle}{fg=DarkGray}
+\setbeamercolor{title}{fg=DarkGray}
+\setbeamercolor{itemize item}{fg=DarkGray}
+\setbeamercolor{itemize subitem}{fg=DarkGray}
+\setbeamercolor{itemize subsubitem}{fg=DarkGray}
+\setbeamercolor{alerted text}{fg=DarkOrange}
+\setbeamercolor{example text}{fg=DarkGreen}
+
+% Font settings
+\usefonttheme[onlymath]{serif}
+\setbeamerfont{frametitle}{size=\Large, series=\bfseries}
+\setbeamerfont{alerted text}{series=\bfseries}
+
+% ===== Frame Title Template =====
+\setbeamertemplate{frametitle}{
+    \vbox{}\vskip -3ex
+    \strut\insertframetitle\strut
+}
+
+% ===== Itemize/Enumerate Templates =====
+\setbeamertemplate{itemize item}{\scriptsize\raise1.25pt\hbox{\large\donotcoloroutermaths$\bullet$}}
+\setbeamertemplate{itemize subitem}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\circ$}}
+\setbeamertemplate{itemize subsubitem}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\blacksquare$}}
+
+% ===== Footline Template with Progress Bar =====
+\newcommand{\slidebib}{}  % Custom bibliography command for each slide
+\newcommand{\slidefooter}{}  % Custom footer text (can be set by user)
+
+\setbeamertemplate{footline}{%
+  % 1) Draw the progress bar
+  \begin{tikzpicture}[remember picture,overlay]
+    % Full-width light bar (background)
+    \fill[progressouter]
+      (current page.south west) rectangle 
+      ($(current page.south east)+(0,3pt)$);
+    % Filled portion proportional to slide number
+    \fill[progressinner]
+      (current page.south west) rectangle
+      ($ (current page.south west)!\insertframenumber/\inserttotalframenumber!(current page.south east)+(0,3pt)$);
+  \end{tikzpicture}%
+  % 2) Push content up so it doesn't overlap the bar
+  \vspace*{11pt}%
+  % 3) Left side: bibliography/references
+  \leavevmode%
+  \begin{minipage}[b]{0.60\paperwidth}
+    \vspace{0.2em}
+    {\fontsize{8}{10}\selectfont \textsf{\slidebib}}
+  \end{minipage}%
+  \hfill
+  % Right side: custom footer text (e.g., copyright, author)
+  \begin{minipage}[b]{0.35\paperwidth}
+    \vspace{0.2em}
+    \raggedleft
+    {\fontsize{9}{11}\selectfont \textrm{\slidefooter}}
+  \end{minipage}%
+  % 4) Slide number at top right corner
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[font=\scriptsize, text=black, anchor=north east] 
+      at ($(current page.north east)+(-0.7em,-0.7em)$) 
+      {\insertframenumber/\inserttotalframenumber};
+  \end{tikzpicture}%
+}
+
+% ===== Title Page Template =====
+\setbeamertemplate{title page}{
+  \vbox{}
+  \vfill
+  \begingroup
+    \centering
+    \begin{beamercolorbox}[sep=8pt,center]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%     
+    \end{beamercolorbox}%
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}\vskip0.5em
+  \endgroup
+  \vfill
+}
+
+% ===== Block Templates =====
+\setbeamertemplate{block begin}{
+  \vspace{0.5em}
+  \begin{beamercolorbox}[ht=3.5ex,dp=0.5ex,leftskip=1em,rightskip=1em]{block title}
+    \usebeamerfont*{block title}\insertblocktitle
+  \end{beamercolorbox}%
+  {\parskip0pt\par}%
+  \usebeamerfont{block body}%
+  \begin{beamercolorbox}[dp=1ex,leftskip=1em,rightskip=1em,vmode]{block body}%
+}
+\setbeamertemplate{block end}{
+  \end{beamercolorbox}
+  \vspace{0.5em}
+}
+
+% ===== Helper Commands =====
+
+% Command to set custom footer text (e.g., copyright)
+\newcommand{\setFooter}[1]{%
+  \renewcommand{\slidefooter}{#1}%
+}
+
+% Command to add references at bottom left (for use with biblatex)
+\newcommand{\bottomleftrefs}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=south west, xshift=1pt, yshift=1pt] at (current page.south west) {%
+      \parbox{0.95\linewidth}{
+        \setlength{\bibitemsep}{0pt plus 0.3ex}
+        \printbibliography[heading=none]
+      }
+    };
+  \end{tikzpicture}%
+}
+
+% Command to manually set slide bibliography reference
+\newcommand{\setSlideBib}[1]{%
+  \gdef\slidebib{#1}%
+}
+
+% Command to clear slide bibliography
+\newcommand{\clearSlideBib}{%
+  \gdef\slidebib{}%
+}
+
+% ===== Margins =====
+\setbeamersize{text margin left=0.05\textwidth}
+\setbeamersize{text margin right=0.05\textwidth}
+
+\mode<all>
+

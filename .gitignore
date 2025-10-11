@@ -1,0 +1,46 @@
+temp/
+
+# LaTeX auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+*.nav
+*.snm
+*.vrb
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex.gz(busy)
+
+# Biber cache
+*-blx.bib
+
+# LaTeX temporary files
+*.backup
+*.bak
+*.sav
+*~
+
+# PDF outputs (uncomment if you don't want to track PDFs)
+# *.pdf
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor-specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build directories
+build/
+out/
