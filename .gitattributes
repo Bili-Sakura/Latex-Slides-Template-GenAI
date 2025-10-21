@@ -1,0 +1,19 @@
+# Prevent symlink creation for LaTeX theme files
+*.sty text
+beamerthemeKeynote.sty text
+
+# Ensure consistent line endings
+*.tex text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+
+# Binary files
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary

@@ -39,11 +39,23 @@ jobs:
       uses: actions/configure-pages@v4
       if: github.ref == 'refs/heads/master'
 
+    - name: Prepare deployment directory
+      run: |
+        mkdir -p _site
+        # Copy only the necessary files for the website
+        cp index.html _site/
+        cp -r assets _site/ 2>/dev/null || true
+        cp -r demo _site/ 2>/dev/null || true
+        cp -r docs _site/ 2>/dev/null || true
+        cp README.md _site/ 2>/dev/null || true
+        cp LICENSE _site/ 2>/dev/null || true
+        echo "Deployment directory prepared with website files only"
+    
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       if: github.ref == 'refs/heads/master'
       with:
-        path: '.'
+        path: '_site'
 
     - name: Deploy to GitHub Pages
       id: deployment
