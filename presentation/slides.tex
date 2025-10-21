@@ -1,0 +1,276 @@
+% ========================================
+% Example Slides - Customize as needed
+% ========================================
+
+% ===== Table of Contents =====
+\begin{frame}{Table of Contents}
+  \tableofcontents
+\end{frame}
+
+% ========================================
+% Section 1: Basic Features
+% ========================================
+\section{Basic Features}
+
+\begin{frame}{Basic Text and Lists}
+  \begin{itemize}
+    \item First main point
+    \begin{itemize}
+      \item Sub-point one
+      \item Sub-point two
+    \end{itemize}
+    \item Second main point
+    \item Third main point
+  \end{itemize}
+  
+  \vspace{1em}
+  
+  Numbered lists:
+  \begin{enumerate}
+    \item First numbered item
+    \item Second numbered item
+    \item Third numbered item
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Text Highlighting and Alerts}
+  In this slide, some important text will be \alert{highlighted in orange} because it's important.
+  
+  \vspace{1em}
+  
+  You can also use \textbf{bold text}, \textit{italic text}, or \underline{underlined text} for emphasis.
+  
+  \vspace{1em}
+  
+  \begin{block}{Information Block}
+    This is a standard information block. Use it to highlight key concepts or definitions.
+  \end{block}
+\end{frame}
+
+% ========================================
+% Section 2: Tables and Figures
+% ========================================
+\section{Tables and Figures}
+
+\begin{frame}{Professional Tables}
+  \begin{table}
+    \centering
+    \caption{Example data table}
+    \begin{tabular}{lcc}
+      \toprule
+      \textbf{Method} & \textbf{Accuracy (\%)} & \textbf{Speed (ms)} \\
+      \midrule
+      Method A & 85.3 & 12.5 \\
+      Method B & 87.1 & 15.2 \\
+      Method C & 89.4 & 18.7 \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+\begin{frame}{Including Images}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{sample-photo.pdf}
+    \caption{Example figure with caption}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Side-by-Side Figures}
+  \begin{figure}
+    \centering
+    \begin{minipage}{0.48\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{sample-diagram.pdf}
+      \caption{First image}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{sample-plot.pdf}
+      \caption{Second image}
+    \end{minipage}
+  \end{figure}
+\end{frame}
+
+% ========================================
+% Section 3: Advanced Features
+% ========================================
+\section{Advanced Features}
+
+\begin{frame}{Two-Column Layout}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \textbf{Left Column}
+      \begin{itemize}
+        \item Point one
+        \item Point two
+        \item Point three
+      \end{itemize}
+      
+      $$E = mc^2$$
+    \end{column}
+    
+    \begin{column}{0.5\textwidth}
+      \textbf{Right Column}
+      \begin{itemize}
+        \item Different point
+        \item Another point
+        \item Final point
+      \end{itemize}
+      
+      $$\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$$
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Colored Boxes with TColorBox}
+  \begin{tcolorbox}[colback=lightorange, colframe=orange, title=Important Note]
+    This is a colored text box that can be used to highlight important information, 
+    intuitions, or key takeaways from your presentation.
+  \end{tcolorbox}
+  
+  \vspace{0.5em}
+  
+  \begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black, title=Technical Detail]
+    You can customize the colors and styles of these boxes to match your presentation theme.
+  \end{tcolorbox}
+\end{frame}
+
+% ========================================
+% Section 4: Citations and References
+% ========================================
+\section{Citations and References}
+
+% Example 1: Using refsection for per-slide references
+\begin{refsection}
+\begin{frame}{Slide with References (Method 1)}
+  This slide demonstrates how to cite papers and display references at the bottom.
+  
+  \vspace{1em}
+  
+  Important research by~\parencite{sample2024} shows that this method is effective. 
+  Another study~\parencite{another2023} confirms these findings.
+  
+  \vspace{1em}
+  
+  The references will appear at the bottom left of this slide.
+  
+  % Display references at bottom-left
+  \bottomleftrefs
+\end{frame}
+\end{refsection}
+
+% Example 2: Manual references using setSlideBib
+\begin{frame}{Slide with Manual Reference (Method 2)}
+  % Manually set the reference text for this slide
+  \setSlideBib{Smith et al., Important Paper Title, Conference 2024}
+  
+  This method allows you to manually specify reference text without using biblatex citations.
+  
+  \vspace{1em}
+  
+  Useful when you want more control over the reference formatting or when the citation 
+  isn't in your .bib file.
+  
+  % Note: The reference will appear at the bottom left of this slide
+\end{frame}
+
+% Clear the manual reference for subsequent slides
+\clearSlideBib
+
+% ========================================
+% Section 5: Multi-page PDF Figures
+% ========================================
+\section{Multi-page PDF Figures}
+
+\begin{frame}{Using Specific Pages from Multi-page PDFs}
+  You can include specific pages from multi-page PDF files using the \texttt{page} option:
+  
+  \begin{figure}
+    \centering
+    % Example: Including page 1 from a sample multi-page PDF
+    \includegraphics[width=0.7\linewidth, page=1]{sample-multipage.pdf}
+    \caption{Page 1 of multi-page PDF (sample-multipage.pdf)}
+  \end{figure}
+  
+  \vspace{0.5em}
+  \small
+  Change the \texttt{page=} number to display different pages from the PDF.
+\end{frame}
+
+\begin{frame}{Cropping and Adjusting PDF Pages}
+  Use \texttt{adjustbox} to crop or trim specific regions:
+  
+  \begin{figure}
+    \centering
+    % Example: crop top and bottom margins, show only middle content
+    \adjustbox{width=0.8\linewidth, trim=0 {0.125\height} 0 {0.125\height}, clip}{
+      \includegraphics[page=2]{sample-multipage.pdf}
+    }
+    \caption{Page 2 of sample-multipage.pdf, with margins cropped}
+  \end{figure}
+  
+  \vspace{0.5em}
+  \small
+  Trim syntax: \texttt{trim=left bottom right top, clip}\\
+  Use absolute values (e.g., \texttt{10pt}) or relative (e.g., \texttt{\{0.2\textbackslash height\}})
+\end{frame}
+
+% ========================================
+% Section 6: Mathematical Equations
+% ========================================
+\section{Mathematical Equations}
+
+\begin{frame}{Inline and Display Math}
+  Inline math: $f(x) = ax^2 + bx + c$
+  
+  \vspace{1em}
+  
+  Display math (centered):
+  $$\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}$$
+  
+  \vspace{1em}
+  
+  Aligned equations:
+  \begin{align*}
+    \nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} \\
+    \nabla \times \mathbf{H} &= \mathbf{J} + \frac{\partial \mathbf{D}}{\partial t}
+  \end{align*}
+\end{frame}
+
+% ========================================
+% Final Slide: References Page
+% ========================================
+\section*{References}
+
+% Cite all bibliography entries to ensure they appear in the References slide
+\nocite{*}
+
+\begin{frame}{References}
+  \scriptsize
+  % Print all references
+  \printbibliography[heading=none]
+\end{frame}
+
+% ========================================
+% Thank You Slide
+% ========================================
+\begin{frame}[plain]
+  \centering
+  \vspace{2cm}
+  
+  \textbf{\Huge Thank You}
+  
+  \vspace{1cm}
+  
+  \large Questions?
+  
+  \vspace{1cm}
+  
+  \normalsize
+  \textbf{Contact}\\
+  \texttt{your.email@example.com}
+  
+\end{frame}
+

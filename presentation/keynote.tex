@@ -1,0 +1,98 @@
+\documentclass[aspectratio=169]{beamer}
+% Uncomment the following for high-resolution output (optional)
+% \pdfpagewidth=1920bp
+% \pdfpageheight=1080bp
+
+% ===== Package Imports =====
+\usepackage{booktabs}          % For professional tables (\toprule, \midrule, \bottomrule)
+\usepackage{multirow}          % For multi-row cells in tables
+\usepackage{graphicx}          % For including images
+\usepackage{adjustbox}         % For adjusting box sizes and clipping
+\usepackage{hyperref}          % For hyperlinks
+
+% Hyperref setup - customize link colors
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+    filecolor=blue
+}
+
+% TikZ for drawing and overlays
+\usepackage{tikz}
+\usepackage{tikzpagenodes}    
+\usetikzlibrary{calc} 
+
+% tcolorbox for colored boxes and highlights
+\usepackage[most]{tcolorbox}
+
+% Graphics path - put your images in this folder
+\graphicspath{{assets/}}
+
+% ===== Theme Setup =====
+\usetheme{Keynote}
+
+% Define additional colors (optional)
+\definecolor{lightorange}{RGB}{255,229,204}
+
+% ===== Biblatex Setup (for references) =====
+\usepackage[
+  backend=biber,
+  style=keynote,        % Uses the custom keynote.bbx/keynote.cbx styles
+  citestyle=keynote,
+  maxbibnames=1,
+  uniquename=false,
+  sorting=none
+]{biblatex}
+\addbibresource{references.bib}
+
+% Customize bibliography font size
+\renewcommand*{\bibfont}{\fontsize{5}{6}\selectfont}
+
+% ===== Metadata (Replace with your information) =====
+\title{Your Presentation Title}
+\subtitle{Your Subtitle (Optional)}
+\author{Your Name}
+\institute{Your Institution}
+\date{\today\\\small\texttt{your.email@example.com}}
+
+% ===== Custom Footer =====
+% Set footer text that appears on every slide (e.g., copyright notice)
+\setFooter{\copyright~\the\year~\insertauthor}
+
+% ===== Document Begin =====
+\begin{document}
+
+% ===== Title Slide =====
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% Alternative custom title slide (uncomment to use)
+% \begin{frame}
+%   \centering
+%   \vspace{1em}
+%   \textbf{\Large Your Custom Title}
+%   
+%   Presented by Your Name\\\today~\\\small\href{mailto:your.email@example.com}{your.email@example.com}
+%   \vspace{2em}
+%   
+%   \begin{figure}
+%     \centering
+%     \includegraphics[width=0.3\linewidth]{sample-logo.pdf}
+%     \scriptsize{Institution logo or key visual}
+%   \end{figure}
+%   
+%   \vspace{1em}
+%   \begin{flushleft}
+%     \footnotesize\textit{*Note: Add any disclaimers or notes here.}
+%   \end{flushleft}
+% \end{frame}
+
+% ===== Include Your Slides =====
+% Place your slide content in a separate file for better organization
+\input{slides}
+
+\end{document}
+
