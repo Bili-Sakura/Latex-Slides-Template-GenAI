@@ -7,16 +7,24 @@ A modern, clean LaTeX Beamer presentation template with a sleek design inspired 
 
 ## Quick Start
 
-1. **Edit `keynote.tex`** - Update your title, author, and institution
-2. **Edit `slides.tex`** - Add your slide content
-3. **Edit `references.bib`** - Add your bibliography entries
-4. **Compile**:
+1. **Navigate to the `presentation` directory**:
    ```bash
-   pdflatex keynote.tex
-   biber keynote
-   pdflatex keynote.tex
-   pdflatex keynote.tex
+   cd presentation
    ```
+2. **Edit `keynote.tex`** - Update your title, author, and institution.
+3. **Edit `slides.tex`** - Add your slide content.
+4. **Edit `references.bib`** - Add your bibliography entries.
+5. **Compile**:
+   ```bash
+   lualatex keynote.tex
+   biber keynote
+   lualatex keynote.tex
+   lualatex keynote.tex
+   ```
+   For VS Code users with the LaTeX Workshop extension, the project is pre-configured to use the correct compiler.
+
+## Portal Version
+A portal version is available in the `portal` directory. This version is designed for a 9:16 aspect ratio, but please be aware that the slide size may still need some adjustments for optimal viewing.
 
 ## Features
 
@@ -31,7 +39,7 @@ For detailed usage instructions, examples, and customization options, see the [c
 
 ## Examples
 
-Check out `slides.tex` for examples and `demo/world_models.pdf` for a production-ready presentation.
+Check out `presentation/slides.tex` for examples and `demo/world_models.pdf` for a production-ready presentation.
 
 ## Citation
 

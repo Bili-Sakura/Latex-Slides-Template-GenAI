@@ -334,29 +334,137 @@ For slides without header/footer (e.g., thank you slide):
 ### Using `pdflatex` and `biber`
 
 ```bash
-pdflatex keynote.tex
+lualatex keynote.tex
 biber keynote
-pdflatex keynote.tex
-pdflatex keynote.tex
+lualatex keynote.tex
+lualatex keynote.tex
 ```
 
 ### Using `latexmk` (recommended)
 
 ```bash
-latexmk -pdf -pdflatex="pdflatex -interaction=nonstopmode" keynote.tex
+latexmk -pdf -pdflatex="lualatex -interaction=nonstopmode" keynote.tex
 ```
 
 To continuously compile on file changes:
 
 ```bash
-latexmk -pdf -pvc keynote.tex
+latexmk -pdf -pvc -pdflatex="lualatex -interaction=nonstopmode" keynote.tex
 ```
+
+### Using VS Code with LaTeX Workshop
+
+The template is configured to be built with `lualatex`. The main file `presentation/keynote.tex` includes a magic comment (`%!TEX program = lualatex`) that tells the LaTeX Workshop extension to use the correct compiler.
+
+The recommended recipe is `lualatex -> biber -> lualatex*2`. Here's a complete `.vscode/settings.json` configuration for optimal LaTeX Workshop usage:
+
+```json
+{
+  "latex-workshop.latex.tools": [
+    {
+      "name": "lualatex",
+      "command": "D:/Latex/texlive/2024/bin/windows/lualatex.exe",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "biber",
+      "command": "D:/Latex/texlive/2024/bin/windows/biber.exe",
+      "args": ["%DOCFILE%"]
+    },
+    {
+      "name": "pdflatex",
+      "command": "D:/Latex/texlive/2024/bin/windows/pdflatex.exe",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "xelatex",
+      "command": "D:/Latex/texlive/2024/bin/windows/xelatex.exe",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "bibtex",
+      "command": "bibtex",
+      "args": ["%DOCFILE%"]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "lualatex -> biber -> lualatex*2",
+      "tools": ["lualatex", "biber", "lualatex", "lualatex"]
+    }
+  ],
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.idx",
+    "*.ind",
+    "*.lof",
+    "*.lot",
+    "*.out",
+    "*.toc",
+    "*.acn",
+    "*.acr",
+    "*.alg",
+    "*.glg",
+    "*.glo",
+    "*.gls",
+    "*.ist",
+    "*.fls",
+    "*.log",
+    "*.fdb_latexmk",
+    "*.snm",
+    "*.synctex.gz",
+    "*.nav"
+  ],
+  "latex-workshop.linting.chktex.exec.args": ["-q", "-n36"],
+  "latex-workshop.linting.chktex.enabled": true,
+  "latex-workshop.message.log.show": false,
+  "latex-workshop.latex.autoBuild.run": "never",
+  "latex-workshop.message.information.show": false,
+  "latex-workshop.message.warning.show": false,
+  "latex-workshop.message.error.show": true,
+  "latex-workshop.message.badbox.show": "none",
+  "[latex]": {
+    "editor.wordWrap": "on"
+  },
+  "[html]": {
+    "editor.wordWrap": "on"
+  }
+}
+```
+
+**Key configuration notes:**
+
+- **Tool paths**: Update the command paths (e.g., `"D:/Latex/texlive/2024/bin/windows/lualatex.exe"`) to match your LaTeX installation
+- **PDF viewer**: Set to `"tab"` to display PDFs in VS Code tabs
+- **Auto-build**: Disabled by default (`"never"`) to prevent compilation on every keystroke
+- **Message filtering**: Error messages are shown while info/warning messages are suppressed for cleaner output
+- **Cleanup**: Automatically removes auxiliary files after compilation
+- **Linting**: ChkTeX is enabled with customized arguments for better LaTeX checking
+- **Word wrap**: Enabled for both LaTeX and HTML files
 
 ### Using Overleaf
 
 1. Upload all files to a new Overleaf project
 2. Make sure the main document is set to `keynote.tex`
-3. The compiler should be set to `pdfLaTeX` with `biber` for bibliography
+3. The compiler should be set to `LuaLaTeX` with `biber` for bibliography
 4. Overleaf will compile automatically
 
 ## Cleanup Script
@@ -390,7 +498,7 @@ The script removes all LaTeX auxiliary files including:
 
 ```bash
 # Compile your presentation
-latexmk -pdf keynote.tex
+latexmk -pdf -pdflatex="lualatex -interaction=nonstopmode" keynote.tex
 
 # Clean up auxiliary files
 ./clean_latex.sh
