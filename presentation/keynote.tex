@@ -1,11 +1,8 @@
 %!TEX program = lualatex
-\documentclass{beamer}
-% Presentation version: 1080x1920 pixels (9:16 portrait aspect ratio)
-% Manually set slide dimensions using Beamer's native approach
-\setlength{\paperwidth}{1080bp}
-\setlength{\paperheight}{1920bp}
-\setlength{\textwidth}{1000bp}
-\setlength{\textheight}{1800bp}
+\documentclass[aspectratio=169]{beamer}
+% Uncomment the following for high-resolution output (optional)
+% \pdfpagewidth=1920bp
+% \pdfpageheight=1080bp
 
 % ===== Package Imports =====
 \usepackage{booktabs}          % For professional tables (\toprule, \midrule, \bottomrule)
@@ -99,4 +96,5 @@
 \input{slides}
 
 \end{document}
+
 

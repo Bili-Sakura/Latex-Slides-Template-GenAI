@@ -322,12 +322,15 @@
             </div>
 
             <h2>About This Template</h2>
-            <p>The Keynote LaTeX Presentation Template is a modern, clean Beamer theme designed for academic and
-                professional presentations. It features a progress bar, flexible citation management, and support
-                for advanced features like multi-page PDF figures.</p>
-
-            <p>This template is production-ready and has been used in real presentations for conferences, research
-                talks, and academic seminars.</p>
+            <p>This template provides two distinct styles for your presentations:</p>
+            <ul>
+                <li><strong>Presentation Style (Default):</strong> A modern, clean 16:9 Beamer theme for standard
+                    academic and professional presentations. It is production-ready and has been used for conferences
+                    and research talks.</li>
+                <li><strong>Portal Style:</strong> A 9:16 vertical version, suitable for mobile-first viewing.</li>
+            </ul>
+            <p>Both styles feature a progress bar, flexible citation management with BibLaTeX, and support for advanced
+                content like multi-page PDF figures.</p>
 
             <h2>Quick Start</h2>
             <p>After cloning this repository, follow these simple steps:</p>
@@ -347,14 +350,10 @@
                 <code>cd presentation<br>pdflatex keynote.tex<br>biber keynote<br>pdflatex keynote.tex<br>pdflatex keynote.tex</code>
             </div>
 
-            <h2>Portal Version</h2>
-            <p>A portal version is available in the <code>portal</code> directory. This version is designed for a 9:16
-                aspect ratio, but please be aware that the slide size may still need some adjustments for optimal
-                viewing.</p>
+            <h2>Previews</h2>
 
-            <h2>Preview</h2>
+            <h3>Presentation Style (16:9)</h3>
             <p>Check out the example presentation to see what you can create with this template:</p>
-
             <div style="text-align: center; margin: 2em 0;">
                 <div style="border: 2px solid #e8e8e8; border-radius: 6px; overflow: hidden; background: #f9f9f9;">
                     <embed src="presentation/keynote.pdf" type="application/pdf" width="100%" height="600px"
@@ -362,10 +361,29 @@
                 </div>
                 <div style="margin-top: 1em;">
                     <a href="presentation/keynote.pdf" download class="pdf-download">
-                        <i class="fas fa-file-pdf"></i> Download Example PDF
+                        <i class="fas fa-file-pdf"></i> Download Presentation PDF
                     </a>
                 </div>
             </div>
+
+            <h3>Portal Style (9:16)</h3>
+            <p>A portal version is available in the <code>portal</code> directory. This version is designed for a 9:16
+                aspect ratio.</p>
+            <details>
+                <summary style="cursor: pointer; font-weight: 500;">Click to expand/collapse Portal version preview
+                </summary>
+                <div style="text-align: center; margin: 2em 0;">
+                    <div style="border: 2px solid #e8e8e8; border-radius: 6px; overflow: hidden; background: #f9f9f9;">
+                        <embed src="portal/keynote.pdf" type="application/pdf" width="100%" height="600px"
+                            style="display: block;">
+                    </div>
+                    <div style="margin-top: 1em;">
+                        <a href="portal/keynote.pdf" download class="pdf-download">
+                            <i class="fas fa-file-pdf"></i> Download Portal PDF
+                        </a>
+                    </div>
+                </div>
+            </details>
 
             <h2>Citation</h2>
             <div class="citation-box">
@@ -397,9 +415,11 @@
                 <a href="https://github.com/Bili-Sakura/Latex-Slides-Template-GenAI" class="btn">
                     <i class="fab fa-github"></i> View on GitHub
                 </a>
-                <a href="https://github.com/Bili-Sakura/Latex-Slides-Template-GenAI/archive/refs/heads/master.zip"
-                    class="btn btn-secondary">
-                    <i class="fas fa-download"></i> Download ZIP
+                <a href="presentation.zip" download class="btn btn-secondary">
+                    <i class="fas fa-file-archive"></i> Download Presentation ZIP
+                </a>
+                <a href="portal.zip" download class="btn btn-secondary">
+                    <i class="fas fa-file-archive"></i> Download Portal ZIP
                 </a>
                 <a href="https://github.com/Bili-Sakura/Latex-Slides-Template-GenAI/blob/master/docs/GUIDE.md"
                     target="_blank" class="btn btn-secondary">
